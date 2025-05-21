@@ -12,6 +12,11 @@ from adafruit_led_animation.animation.rainbowcomet import RainbowComet
 from adafruit_led_animation.color import AMBER, JADE
 from imports.pixel_mappers import vertical_stacked_panels_mapper
 
+# This example is for a 32x32 grid of 8x32 panels, with 4 panels stacked vertically.
+# The pixel wings split the matrix into 4 quadrants, top_left and bottom_left,
+# top_right and bottom_right. The X ofset is from the right in this example
+# # because that is where pixel zero was.
+
 # Update to match the pin connected to your NeoPixels
 pixel_pin = board.GP2
 # Update to match the number of NeoPixels you have connected
@@ -20,29 +25,29 @@ pixel_num = 1024
 pixels = neopixel.NeoPixel(pixel_pin, pixel_num, brightness=0.75, auto_write=False)
 pixels.fill((0, 0, 0))
 
-pixel_wing_top_left = helper.PixelMap.horizontal_lines(
+pixel_wing_botom_right = helper.PixelMap.horizontal_lines(
     pixels,
     16,
     16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True, x_offset=16, y_offset=16),
+    vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16, y_offset=16),
+)
+
+pixel_wing_top_right = helper.PixelMap.horizontal_lines(
+    pixels, 16, 16, vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16)
 )
 
 pixel_wing_botom_left = helper.PixelMap.horizontal_lines(
     pixels,
     16,
     16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True, x_offset=16),
+    vertical_stacked_panels_mapper(32, 32, panel_height=8, y_offset=16),
 )
 
-pixel_wing_top_right = helper.PixelMap.horizontal_lines(
+pixel_wing_top_left = helper.PixelMap.horizontal_lines(
     pixels,
     16,
     16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True, y_offset=16),
-)
-
-pixel_wing_botom_right = helper.PixelMap.horizontal_lines(
-    pixels, 16, 16, vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True)
+    vertical_stacked_panels_mapper(32, 32, panel_height=8),
 )
 
 comet = Comet(pixel_wing_top_left, speed=0.1, color=AMBER, tail_length=6, bounce=True)

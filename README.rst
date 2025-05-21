@@ -1,9 +1,6 @@
 Introduction
 ============
 
-
-
-
 .. image:: https://img.shields.io/discord/327254708534116352.svg
     :target: https://adafru.it/discord
     :alt: Discord
@@ -19,7 +16,23 @@ Introduction
     :alt: Code Style: Ruff
 
 Pixel Mapper for Adafruit_CircuitPython_LED_Animation
+=================================================
 
+This library provides custom pixel mappers for use with the Adafruit CircuitPython LED Animation library.
+
+The built-in mappers only support arranging multiple matrices in the direction the internal LED strip is physically wired. This library extends that functionality by allowing you to stack panels vertically or horizontally, regardless of wiring direction.
+
+You can also apply optional x and y offsets, making it easier to treat sections of a larger matrix as independent regions — without manually defining complex pixel maps.
+
+Key Features
+================
+Combine multiple LED panels into vertical or horizontal matrix layouts
+
+Support for snaking layouts (e.g. zigzag wiring patterns)
+
+Optional x/y offsets for sub-matrix mapping
+
+Compatible with Adafruit's CircuitPython LED Animation library
 
 Dependencies
 =============
@@ -35,8 +48,6 @@ or individual libraries can be installed using
 
 Installing from PyPI
 =====================
-.. note:: This library is not available on PyPI yet. Install documentation is included
-   as a standard element. Stay tuned for PyPI availability!
 
 On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
 PyPI <https://pypi.org/project/circuitpython-pixel-mapper/>`_.
