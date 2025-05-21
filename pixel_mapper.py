@@ -31,7 +31,7 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/clickonben/CircuitPython_pixel_mapper.git"
 
 
-def vertical_stacked_panels_mapper(
+def vertical_stacked_panels_mapper(  # noqa: PLR0913, PLR0917
     width, height, panel_height=8, alternating=True, reverse=False, x_offset=0, y_offset=0
 ):
     """
@@ -80,7 +80,7 @@ def vertical_stacked_panels_mapper(
     return mapper
 
 
-def horizontal_stacked_panels_mapper(
+def horizontal_stacked_panels_mapper(  # noqa: PLR0913, PLR0917
     width, height, panel_width=8, alternating=True, reverse=False, x_offset=0, y_offset=0
 ):
     """
