@@ -15,6 +15,9 @@ Introduction
     :target: https://github.com/astral-sh/ruff
     :alt: Code Style: Ruff
 
+.. image:: https://cdn.codingflow.dev/pixel-mapper/32x32-led-matrix.gif
+   :alt: Demo animation
+
 Pixel Mapper for Adafruit_CircuitPython_LED_Animation
 ===============================================================
 
