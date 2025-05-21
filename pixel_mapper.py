@@ -16,8 +16,8 @@ Implementation Notes
 
 **Hardware:**
 
-.. todo:: Add links to any specific hardware product page(s), or category page(s).
-  Use unordered list & hyperlink rST inline format: "* `Link Text <url>`_"
+* `Adafruit NeoPixels <https://www.adafruit.com/category/168>`_
+* `Adafruit DotStars <https://www.adafruit.com/category/885>`_
 
 **Software and Dependencies:**
 
@@ -29,11 +29,15 @@ Implementation Notes
 
 __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/clickonben/CircuitPython_pixel_mapper.git"
-def vertical_stacked_panels_mapper(width, height, panel_height=8, alternating=True, reverse=False, x_offset=0, y_offset=0):
+
+
+def vertical_stacked_panels_mapper(
+    width, height, panel_height=8, alternating=True, reverse=False, x_offset=0, y_offset=0
+):
     """
     Maps (x, y) to index in a display made of vertically stacked 32x8 panels,
     each snaking vertically up and down, with panels stacked top-to-bottom.
-    
+
     :param width: Full grid width (e.g., 32)
     :param height: Full grid height (e.g., 32)
     :param panel_height: Height of each panel
@@ -45,27 +49,28 @@ def vertical_stacked_panels_mapper(width, height, panel_height=8, alternating=Tr
     :raises ValueError: If x or y coordinates are out of bounds
     """
     panels_down = height // panel_height
+
     def mapper(x, y):
         adjusted_x = x + x_offset
         adjusted_y = y + y_offset
         if adjusted_x < 0:
-            raise ValueError("x coordinate out of bounds")   
+            raise ValueError("x coordinate out of bounds")
         if adjusted_y < 0:
-            raise ValueError("y coordinate out of bounds")    
+            raise ValueError("y coordinate out of bounds")
         if adjusted_x >= width:
             raise ValueError("x coordinate out of bounds")
         if adjusted_y >= height:
             raise ValueError("y coordinate out of bounds")
-        
+
         panel_index = adjusted_y // panel_height
         if reverse:
             panel_index = panels_down - 1 - panel_index
 
-          # which 8-row block we're in (top to bottom)
-        local_y = adjusted_y % panel_height       # y within the panel
+        # which 8-row block we're in (top to bottom)
+        local_y = adjusted_y % panel_height  # y within the panel
 
         if adjusted_x % 2 == 1 and alternating:
-            pixel_in_panel = adjusted_x * panel_height + (panel_height - 1 - local_y)            
+            pixel_in_panel = adjusted_x * panel_height + (panel_height - 1 - local_y)
         else:
             pixel_in_panel = adjusted_x * panel_height + local_y
 
@@ -74,11 +79,14 @@ def vertical_stacked_panels_mapper(width, height, panel_height=8, alternating=Tr
 
     return mapper
 
-def horizontal_stacked_panels_mapper(width, height, panel_width=8, alternating=True, reverse=False, x_offset=0, y_offset=0):
+
+def horizontal_stacked_panels_mapper(
+    width, height, panel_width=8, alternating=True, reverse=False, x_offset=0, y_offset=0
+):
     """
     Maps (x, y) to index in a display made of horizontally stacked panels,
     each snaking vertically in columns, with panels laid left to right.
-    
+
     :param width: Full matrix width (e.g., 32)
     :param height: Full matrix height (e.g., 16)
     :param panel_width: Width of each panel (default: 8)
@@ -95,14 +103,14 @@ def horizontal_stacked_panels_mapper(width, height, panel_width=8, alternating=T
         adjusted_x = x + x_offset
         adjusted_y = y + y_offset
         if adjusted_x < 0:
-            raise ValueError("x coordinate out of bounds")   
+            raise ValueError("x coordinate out of bounds")
         if adjusted_y < 0:
-            raise ValueError("y coordinate out of bounds")    
+            raise ValueError("y coordinate out of bounds")
         if adjusted_x >= width:
             raise ValueError("x coordinate out of bounds")
         if adjusted_y >= height:
             raise ValueError("y coordinate out of bounds")
-        
+
         panel_index = adjusted_x // panel_width
         if reverse:
             panel_index = panels_across - 1 - panel_index

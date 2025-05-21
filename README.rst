@@ -145,7 +145,7 @@ Usage Example
         comet.animate()
         chase.animate()
         rainbow_chase.animate()
-        rainbow_comet.animate()   
+        rainbow_comet.animate()
 
 
 

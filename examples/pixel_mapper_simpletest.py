@@ -4,13 +4,12 @@
 # SPDX-License-Identifier: Unlicense
 import board
 import neopixel
-
 from adafruit_led_animation import helper
 from adafruit_led_animation.animation.chase import Chase
 from adafruit_led_animation.animation.comet import Comet
 from adafruit_led_animation.animation.rainbowchase import RainbowChase
 from adafruit_led_animation.animation.rainbowcomet import RainbowComet
-from adafruit_led_animation.color import AMBER, JADE, PURPLE, RED, GREEN, BLUE,OLD_LACE,ORANGE
+from adafruit_led_animation.color import AMBER, JADE
 from imports.pixel_mappers import vertical_stacked_panels_mapper
 
 # Update to match the pin connected to your NeoPixels
@@ -32,7 +31,7 @@ pixel_wing_botom_left = helper.PixelMap.horizontal_lines(
     pixels,
     16,
     16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True, x_offset=16)
+    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True, x_offset=16),
 )
 
 pixel_wing_top_right = helper.PixelMap.horizontal_lines(
@@ -43,10 +42,7 @@ pixel_wing_top_right = helper.PixelMap.horizontal_lines(
 )
 
 pixel_wing_botom_right = helper.PixelMap.horizontal_lines(
-    pixels,
-    16,
-    16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True)
+    pixels, 16, 16, vertical_stacked_panels_mapper(32, 32, panel_height=8, reverse=True)
 )
 
 comet = Comet(pixel_wing_top_left, speed=0.1, color=AMBER, tail_length=6, bounce=True)
@@ -58,4 +54,4 @@ while True:
     comet.animate()
     chase.animate()
     rainbow_chase.animate()
-    rainbow_comet.animate()  
+    rainbow_comet.animate()
