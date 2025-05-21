@@ -13,9 +13,11 @@ from adafruit_led_animation.color import AMBER, JADE
 from imports.pixel_mappers import vertical_stacked_panels_mapper
 
 # This example is for a 32x32 grid of 8x32 panels, with 4 panels stacked vertically.
+# Within each panel, the pixels are arranged in a snake pattern, alternating
+# direction for each column.
 # The pixel wings split the matrix into 4 quadrants, top_left and bottom_left,
-# top_right and bottom_right. The X ofset is from the right in this example
-# # because that is where pixel zero was.
+# top_right and bottom_right. The X and Y offset are from the location of the 0 pizel
+# which in this example is in the top left corner of the matrix.
 
 # Update to match the pin connected to your NeoPixels
 pixel_pin = board.GP2
@@ -33,7 +35,10 @@ pixel_wing_botom_right = helper.PixelMap.horizontal_lines(
 )
 
 pixel_wing_top_right = helper.PixelMap.horizontal_lines(
-    pixels, 16, 16, vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16)
+    pixels,
+    16,
+    16,
+    vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16)
 )
 
 pixel_wing_botom_left = helper.PixelMap.horizontal_lines(
