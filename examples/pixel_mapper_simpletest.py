@@ -40,10 +40,7 @@ pixel_wing_bottom_right = helper.PixelMap.horizontal_lines(
 )
 
 pixel_wing_top_right = helper.PixelMap.horizontal_lines(
-    pixels,
-    16,
-    16,
-    vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16)
+    pixels, 16, 16, vertical_stacked_panels_mapper(32, 32, panel_height=8, x_offset=16)
 )
 
 pixel_wing_bottom_left = helper.PixelMap.horizontal_lines(
