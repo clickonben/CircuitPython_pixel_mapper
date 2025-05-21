@@ -16,7 +16,7 @@ Introduction
     :alt: Code Style: Ruff
 
 Pixel Mapper for Adafruit_CircuitPython_LED_Animation
-=================================================
+===============================================================
 
 This library provides custom pixel mappers for use with the Adafruit CircuitPython LED Animation library.
 
@@ -25,7 +25,7 @@ The built-in mappers only support arranging multiple matrices in the direction t
 You can also apply optional x and y offsets, making it easier to treat sections of a larger matrix as independent regions — without manually defining complex pixel maps.
 
 Key Features
-================
+============
 Combine multiple LED panels into vertical or horizontal matrix layouts
 
 Support for snaking layouts (e.g. zigzag wiring patterns)
