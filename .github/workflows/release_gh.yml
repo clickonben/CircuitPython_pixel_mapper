@@ -4,9 +4,13 @@
 
 name: GitHub Release Actions
 
+permissions:
+  contents: write
+
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   upload-release-assets:
