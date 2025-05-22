@@ -53,20 +53,15 @@ def vertical_stacked_panels_mapper(  # noqa: PLR0913, PLR0917
     def mapper(x, y):
         adjusted_x = x + x_offset
         adjusted_y = y + y_offset
-        if adjusted_x < 0:
+        if adjusted_x < 0 or adjusted_x >= width:
             raise ValueError("x coordinate out of bounds")
-        if adjusted_y < 0:
-            raise ValueError("y coordinate out of bounds")
-        if adjusted_x >= width:
-            raise ValueError("x coordinate out of bounds")
-        if adjusted_y >= height:
+        if adjusted_y < 0 or adjusted_y >= height:
             raise ValueError("y coordinate out of bounds")
 
         panel_index = adjusted_y // panel_height
         if reverse:
             panel_index = panels_down - 1 - panel_index
 
-        # which 8-row block we're in (top to bottom)
         local_y = adjusted_y % panel_height  # y within the panel
 
         if adjusted_x % 2 == 1 and alternating:
@@ -102,13 +97,9 @@ def horizontal_stacked_panels_mapper(  # noqa: PLR0913, PLR0917
     def mapper(x, y):
         adjusted_x = x + x_offset
         adjusted_y = y + y_offset
-        if adjusted_x < 0:
+        if adjusted_x < 0 or adjusted_x >= width:
             raise ValueError("x coordinate out of bounds")
-        if adjusted_y < 0:
-            raise ValueError("y coordinate out of bounds")
-        if adjusted_x >= width:
-            raise ValueError("x coordinate out of bounds")
-        if adjusted_y >= height:
+        if adjusted_y < 0 or adjusted_y >= height:
             raise ValueError("y coordinate out of bounds")
 
         panel_index = adjusted_x // panel_width
