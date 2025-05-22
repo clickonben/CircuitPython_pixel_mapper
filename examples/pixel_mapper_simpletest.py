@@ -10,6 +10,7 @@ from adafruit_led_animation.animation.comet import Comet
 from adafruit_led_animation.animation.rainbowchase import RainbowChase
 from adafruit_led_animation.animation.rainbowcomet import RainbowComet
 from adafruit_led_animation.color import AMBER, JADE
+
 from pixel_mapper import vertical_stacked_panels_mapper
 
 # This example is for a 32x32 matrix made from four 8x32 panels stacked vertically.
