@@ -112,7 +112,7 @@ Usage Example
     from adafruit_led_animation.animation.rainbowchase import RainbowChase
     from adafruit_led_animation.animation.rainbowcomet import RainbowComet
     from adafruit_led_animation.color import AMBER, JADE, PURPLE, RED, GREEN, BLUE,OLD_LACE,ORANGE
-    from imports.pixel_mappers import vertical_stacked_panels_mapper
+    from pixel_mapper import vertical_stacked_panels_mapper
 
     # Update to match the pin connected to your NeoPixels
     pixel_pin = board.GP2
